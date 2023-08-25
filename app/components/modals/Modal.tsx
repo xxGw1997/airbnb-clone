@@ -7,8 +7,8 @@ import Button from "../Button";
 
 interface ModalProps {
   isOpen?: boolean;
-  onClose?: () => void;
-  onSubmit?: () => void;
+  onClose: () => void;
+  onSubmit: () => void;
   title?: string;
   body?: React.ReactElement;
   footer?: React.ReactElement;
@@ -40,7 +40,7 @@ const Modal: React.FC<ModalProps> = ({
     if (disabled) return;
     setShowModal(false);
     setTimeout(() => {
-      onClose;
+      onClose();
     }, 300);
   }, [disabled, onClose]);
 
@@ -89,10 +89,15 @@ const Modal: React.FC<ModalProps> = ({
                 {secondaryAction && secondaryActionLabel && (
                   <Button
                     disabled={disabled}
-                    label={actionLabel}
+                    label="Button"
                     onClick={handleSubmit}
                   />
                 )}
+                <Button
+                  disabled={disabled}
+                  label={actionLabel}
+                  onClick={handleSubmit}
+                />
               </div>
             </div>
           </div>
