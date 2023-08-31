@@ -3,7 +3,7 @@
 import { signIn } from 'next-auth/react'
 import useLoginModal from '@/app/hooks/useLoginModal'
 import Modal from './Modal'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
 import { FcGoogle } from 'react-icons/fc'
@@ -12,9 +12,11 @@ import Input from '../inputs/Input'
 import Button from '../Button'
 import { AiFillGithub } from 'react-icons/ai'
 import { useRouter } from 'next/navigation'
+import useRegisterModal from '@/app/hooks/useRegisterModal'
 
 const LoginModal = () => {
   const loginModal = useLoginModal()
+  const registerModal = useRegisterModal()
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
@@ -48,6 +50,11 @@ const LoginModal = () => {
       }
     })
   }
+
+  const toggle = useCallback(() => {
+    loginModal.onClose()
+    registerModal.onOpen()
+  }, [loginModal, registerModal])
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -89,12 +96,12 @@ const LoginModal = () => {
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex justify-center flex-row items-center gap-2">
-          <div>Already have an account?</div>
+          <div>First time using Airbnb?</div>
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={loginModal.onClose}
+            onClick={toggle}
           >
-            Log in
+            Create an account
           </div>
         </div>
       </div>
