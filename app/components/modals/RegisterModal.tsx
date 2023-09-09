@@ -37,7 +37,9 @@ const RegisterModal = () => {
     axios
       .post('/api/register', data)
       .then(() => {
+        toast.success('Success!')
         registerModal.onClose()
+        loginModal.onOpen()
       })
       .catch((err) => {
         toast.error('Someting went wrong')
@@ -88,7 +90,7 @@ const RegisterModal = () => {
       <hr />
       <Button
         outline
-        label="Contine with Google" 
+        label="Contine with Google"
         icon={FcGoogle}
         onClick={() => signIn('google')}
       />

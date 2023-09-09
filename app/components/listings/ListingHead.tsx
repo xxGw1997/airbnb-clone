@@ -1,6 +1,6 @@
 'use client'
 
-import useCountries from '@/app/hooks/useContries'
+import useCountries from '@/app/hooks/useCountries'
 import { SafeUser } from '@/app/types'
 import Heading from '../Heading'
 import HeartButton from '../HeartButton'

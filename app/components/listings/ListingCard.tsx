@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import useCountries from '@/app/hooks/useContries'
+import useCountries from '@/app/hooks/useCountries'
 import { SafeListing, SafeReservation, SafeUser } from '@/app/types'
 import { useRouter } from 'next/navigation'
 import { useCallback, useMemo } from 'react'
